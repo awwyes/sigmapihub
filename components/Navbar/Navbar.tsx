@@ -15,7 +15,8 @@ import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon, } from '@c
           borderBottom={1}
           borderStyle={'solid'}
           borderColor={useColorModeValue('gray.200', 'gray.900')}
-          align={'center'}>
+          align={"center"}
+        >
           <Flex
             flex={{ base: 1, md: 'auto' }}
             ml={{ base: -2 }}
@@ -34,6 +35,7 @@ import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon, } from '@c
                 src={'/logo.svg'}
                 width={'10vw'}
                 height={'10vh'}
+                alt={'Sigma Pi Logo'}
             />
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
               <DesktopNav />
@@ -59,7 +61,6 @@ import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon, } from '@c
               fontWeight={600}
               color={'white'}
               bg={'pink.400'}
-              href={'/'}
               _hover={{
                 bg: 'pink.300',
               }}>
