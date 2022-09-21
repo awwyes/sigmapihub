@@ -1,19 +1,20 @@
-import { Button, ButtonGroup, VisuallyHidden } from '@chakra-ui/react'
-import { FaFacebook, FaTwitter, FaGoogle } from 'react-icons/fa'
+import { Button } from '@chakra-ui/react'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
-const providers = [
-  { name: 'Google', icon: <FaGoogle />, size: '40px', bgcolor: 'blue' },
-  { name: 'Twitter', icon: <FaTwitter /> , size: '40px', bgcolor: 'blue' },
-  { name: 'Facebook', icon: <FaFacebook />, size: '40px', bgcolor: 'blue' },
-]
 
-export const OAuthButtonGroup = () => (
-  <ButtonGroup variant="outline" spacing="4" width="full">
-    {providers.map(({ name, icon, size, bgcolor }) => (
-      <Button key={name} width="full">
-        <VisuallyHidden boxSize={size} backgroundColor={bgcolor}>Sign in with {name}</VisuallyHidden>
-        {icon}
-      </Button>
-    ))}
-  </ButtonGroup>
-)
+export default function OAuthButtonGroup() {
+  const { data: session } = useSession()
+  if (session) {
+    return (
+      <>
+        Signed in as {session.user.email} <br />
+        <Button onClick={() => signOut()}>Sign Out</Button>
+      </>
+    )
+  }
+  return (
+    <>
+      <Button onClick={() => signIn()}>Sign In</Button>
+    </>
+  )
+}

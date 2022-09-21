@@ -1,7 +1,8 @@
-import { Box, HStack, Input, Stack, Text, Button, Checkbox, Container, Divider, FormControl, FormLabel, Heading, useBreakpointValue, useColorModeValue } from '@chakra-ui/react'
+import { Box, HStack, Input, Stack, Text, Button, Checkbox, Container, Divider, FormControl, FormLabel, Heading, useBreakpointValue, useColorModeValue, Flex } from '@chakra-ui/react'
 import * as React from 'react'
+import NextLink from 'next/link'
 import { Logo } from './Logo'
-import { OAuthButtonGroup } from './OAuthButtonGroup'
+import OAuthButtonGroup from './OAuthButtonGroup'
 import { PasswordField } from './PasswordField'
   
   export default function Login() {
@@ -16,9 +17,12 @@ import { PasswordField } from './PasswordField'
                 </Heading>
                 <HStack spacing="1" justify="center">
                 <Text color='muted'>{"Don't have an account?"}</Text>
-                <Button variant="link" colorScheme="blue">
-                    Sign up
-                </Button>
+                <NextLink passHref href="/signup">
+                    <Button variant="link" colorScheme="blue">
+                        Sign up
+                    </Button>
+                </NextLink>
+                
                 </HStack>
             </Stack>
             </Stack>
@@ -44,15 +48,7 @@ import { PasswordField } from './PasswordField'
                 </Button>
                 </HStack>
                 <Stack spacing="6">
-                <Button variant="primary">Sign in</Button>
-                <HStack>
-                    <Divider />
-                    <Text fontSize="sm" whiteSpace="nowrap" color="muted">
-                    or continue with
-                    </Text>
-                    <Divider />
-                </HStack>
-                <OAuthButtonGroup />
+                <OAuthButtonGroup />                
                 </Stack>
             </Stack>
             </Box>

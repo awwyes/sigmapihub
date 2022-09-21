@@ -1,5 +1,8 @@
-import { Box, Flex, Text, IconButton, Button, Stack, Collapse, Image, Icon, Link, Popover, PopoverTrigger, PopoverContent, useColorModeValue, useDisclosure, } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon, } from '@chakra-ui/icons';
+import { Box, Flex, Text, IconButton, Button, Stack, Collapse, Icon, Link, Popover, PopoverTrigger, PopoverContent, useColorModeValue, useDisclosure, } from '@chakra-ui/react'
+import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon, } from '@chakra-ui/icons'
+import NextLink from 'next/link'
+import DarkModeSwitch from '../DarkModeSwitch/DarkModeSwitch'
+import Logo from '../Logo/Logo'
   
   export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
@@ -31,12 +34,7 @@ import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon, } from '@c
             />
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-            <Image 
-                src={'/logo.svg'}
-                width={'10vw'}
-                height={'10vh'}
-                alt={'Sigma Pi Logo'}
-            />
+            <Logo />
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
               <DesktopNav />
             </Flex>
@@ -47,28 +45,22 @@ import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon, } from '@c
             justify={'flex-end'}
             direction={'row'}
             spacing={6}>
-            <Button
-              as={'a'}
-              fontSize={'sm'}
-              fontWeight={400}
-              variant={'link'}
-              href={'#'}>
-              Sign In
-            </Button>
-            <Button
-              display={{ base: 'none', md: 'inline-flex' }}
-              fontSize={'sm'}
-              fontWeight={600}
-              color={'white'}
-              bg={'pink.400'}
-              _hover={{
-                bg: 'pink.300',
-              }}>
-              Sign Up
-            </Button>
+              <NextLink passHref href="/signin">
+                <Button
+                  display={{ base: 'none', md: 'inline-flex' }}
+                  fontSize={'sm'}
+                  fontWeight={600}
+                  color={'white'}
+                  bg={'purple.500'}
+                  _hover={{
+                    bg: 'emerald.500',
+                  }}>
+                  Sign In
+                </Button>
+            </NextLink>
           </Stack>
+          <DarkModeSwitch />
         </Flex>
-  
         <Collapse in={isOpen} animateOpacity>
           <MobileNav />
         </Collapse>
